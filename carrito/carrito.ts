@@ -2,10 +2,10 @@ import { clear } from './../node_modules/sisteransi/src/sisteransi.d';
 import { Item, Product, ShoppingCart } from "./dtos";
 
 export class ShoppingCartService {
-    static basket: ShoppingCart = {items: []};
+    static basket: ShoppingCart = { items: [] };
     public shoppingCart() {
     }
-    
+
     static AddItem(item: Item) {
         const currentTotalAmount = this.basket.totalAmount ?? 0;
         const currentTotalItems = this.basket.totalItems ?? 0;
@@ -16,7 +16,7 @@ export class ShoppingCartService {
     }
 
     static Clean() {
-        this.basket = {items: []};
+        this.basket = { items: [] };
     }
 
     // static GetBasket(): ShoppingCart {
