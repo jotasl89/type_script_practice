@@ -10,9 +10,15 @@ export class ShoppingCartService {
         const currentTotalAmount = this.basket.totalAmount ?? 0;
         const currentTotalItems = this.basket.totalItems ?? 0;
 
-        this.basket.totalAmount = currentTotalAmount + item.price * item.qty;
-        this.basket.totalItems = currentTotalItems + item.qty;
-        this.basket.items?.push(item);
+        this.basket.totalAmount = currentTotalAmount + (item.product.price * item.qty);
+        
+        let itemExistente = this.basket.items?.find(itemList => itemList.product.id === item.product.id);
+        if(itemExistente) {
+            itemExistente.qty = itemExistente.qty + item.qty;
+        } else {
+            this.basket.totalItems = currentTotalItems + item.qty;
+            this.basket.items?.push(item);
+        }
     }
 
     static Clean() {

@@ -5,8 +5,9 @@ export interface Product {
     stock?: number;
 }
 
-export interface Item extends Product {
-    qty: number
+export interface Item {
+    qty: number;
+    product: Product;
 }
 
 export interface ShoppingCart {
